@@ -20,6 +20,10 @@ export class CurrencySelectorComponent implements OnInit {
   baseCurrencyCode: any;
   otherCurrencyConversionRate: any;
   submit: boolean;
+  monthArr: any[];
+  dateArr: any[];
+  trendInCurrency = [];
+  isTrend: boolean;
   constructor(public currencyService: ConversionRatesService) { }
 
   /**
@@ -56,9 +60,41 @@ export class CurrencySelectorComponent implements OnInit {
    */
   async onConvertClick() {
     const res = await this.currencyService.getLatestExchangeRates(this.baseCurrencyCode).subscribe((con) => {
-       this.otherCurrencyConversionRate = con.rates.INR;
-       this.submit = true;
+      this.otherCurrencyConversionRate = con.rates.INR;
+      this.submit = true;
+    });
+
+  }
+
+  /**
+   * This method is called on click of trends
+   */
+  async getTrends() {
+    const res = await this.currencyService.getTrendRates('2019-08-18', '2020-08-18').subscribe((con) => {
+      const keys = Object.keys(con.rates);
+      this.monthArr = [];
+      this.dateArr = [];
+      this.trendInCurrency = [];
+      keys.forEach((key: any, index: any) => {
+        const month = key.split('-')[1];
+        const ind = this.monthArr.indexOf(month);
+        if (ind === -1) {
+          this.monthArr.push(month);
+          this.dateArr.push(key);
+        }
       });
+      console.log("datearr", this.dateArr)
+      if (this.dateArr.length > 0) {
+        this.dateArr.forEach((date: any, ind: any) => {
+          const value = con.rates[date];
+          if (value) {
+            this.trendInCurrency.push(value[this.baseCurrencyCode]);
+          }
+        });
+        console.log("trendCurre", this.trendInCurrency)
+      }
+      this.isTrend = true;
+    });
 
   }
 

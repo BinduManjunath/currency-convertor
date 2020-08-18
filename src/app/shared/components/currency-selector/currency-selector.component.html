@@ -19,11 +19,11 @@
   </div>
 
   <div class="col-2 row">
-    <button type="button" class="btn btn btn-success col main-button">Show trends</button>
+    <button type="button" class="btn btn btn-success col main-button" (click)="getTrends()">Show trends</button>
   </div>
 </div>
 
-<li *ngIf="submit">
+<div class="currency-card" *ngIf="submit && amount && !isTrend">
   <div
     class="convertion-rates-container"
     [attr.aria-label]="'Convertion result from ' + baseCurrencyCode + ' to ' + otherCurrencyCode">
@@ -43,7 +43,9 @@
     [attr.aria-label]="amount + ' ' + baseCurrencyCode + ' is equal to ' + (amount * otherCurrencyConversionRate | number:'1.2-2') + ' ' +  otherCurrencyCode">
     {{ amount * otherCurrencyConversionRate | currency:otherCurrencyCode }}
   </div>
-</li>
+</div>
+<app-currency-trends *ngIf="isTrend" [months]="monthArr" [values]="trendInCurrency" [baseCurrency]="baseCurrencyCode"></app-currency-trends>
+
 
 
 

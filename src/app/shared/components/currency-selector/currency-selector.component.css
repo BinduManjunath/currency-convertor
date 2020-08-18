@@ -9,7 +9,7 @@
     margin-right: 2rem;
 }
 
-li {
+.currency-card {
     display: flex;
     justify-content: space-between;
     align-items: center;

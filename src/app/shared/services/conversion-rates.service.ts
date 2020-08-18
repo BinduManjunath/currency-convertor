@@ -10,12 +10,19 @@ export class ConversionRatesService {
 
 
   private readonly apiEndpoint = 'https://api.exchangeratesapi.io/latest';
+  private readonly apihistory = 'https://api.exchangeratesapi.io/history';
 
   constructor(private http: HttpClient) {}
 
   getLatestExchangeRates(baseCurrencyCode: string): any {
     return this.http.get<ExchangeRates>(
       `${this.apiEndpoint}/?base=${baseCurrencyCode}&symbols=INR`
+    );
+  }
+
+  getTrendRates(fromDate: String, toDate: String) {
+    return this.http.get<ExchangeRates>(
+      `${this.apihistory}?start_at=${fromDate}&end_at=${toDate}&base=INR`
     );
   }
 }
