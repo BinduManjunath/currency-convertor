@@ -44,7 +44,7 @@
     {{ amount * otherCurrencyConversionRate | currency:otherCurrencyCode }}
   </div>
 </div>
-<app-currency-trends *ngIf="isTrend" [months]="monthArr" [values]="trendInCurrency" [baseCurrency]="baseCurrencyCode"></app-currency-trends>
+<app-currency-trends *ngIf="isTrend" [months]="dateArr" [values]="trendInCurrency" [baseCurrency]="baseCurrencyCode"></app-currency-trends>
 
 
 

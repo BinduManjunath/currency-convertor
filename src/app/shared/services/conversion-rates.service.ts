@@ -22,7 +22,7 @@ export class ConversionRatesService {
 
   getTrendRates(fromDate: String, toDate: String) {
     return this.http.get<ExchangeRates>(
-      `${this.apihistory}?start_at=${fromDate}&end_at=${toDate}&base=INR`
+      `${this.apihistory}?start_at=${fromDate}&end_at=${toDate}&base=EUR`
     );
   }
 }

@@ -40,11 +40,6 @@ export class CurrencyTrendsComponent implements OnInit {
     console.log(event);
   }
   ngOnInit() {
-    // console.log(this.months)
-    // this.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
-    // 'October', 'November', 'December'];
-    // this.values = [0.0113403757, 0.0114006886, 0.0117741252, 0.0128303,
-    //   0.0121577591, 0.0120694962, 0.012670979, 0.0126312067, 0.0127462415, 0.0127532313, 0.0126127262, 0.0118891927]
     this.lineChartData = [
       { data: this.values, label: 'Trend in INR against ' + this.baseCurrency },
     ];

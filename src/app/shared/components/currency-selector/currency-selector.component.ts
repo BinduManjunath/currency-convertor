@@ -88,7 +88,7 @@ export class CurrencySelectorComponent implements OnInit {
         this.dateArr.forEach((date: any, ind: any) => {
           const value = con.rates[date];
           if (value) {
-            this.trendInCurrency.push(value[this.baseCurrencyCode]);
+            this.trendInCurrency.push(value['INR']);
           }
         });
         console.log("trendCurre", this.trendInCurrency)
