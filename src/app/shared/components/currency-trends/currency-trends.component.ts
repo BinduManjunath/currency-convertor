@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 
@@ -9,7 +9,7 @@ import { Label, Color } from 'ng2-charts';
 })
 
 
-export class CurrencyTrendsComponent implements OnInit, OnChanges {
+export class CurrencyTrendsComponent implements OnInit {
   @Input() months: any;
   @Input() values: any;
   @Input() baseCurrency;
@@ -31,7 +31,7 @@ export class CurrencyTrendsComponent implements OnInit, OnChanges {
   }
   ngOnInit() {
     this.lineChartData = [
-      { data: this.values, label: 'Trend in INR against ' + this.baseCurrency },
+      { data: this.values, label: 'Trend in ' + this.baseCurrency + ' against INR in a year' },
     ];
     this.lineChartLabels = this.months;
 
@@ -47,24 +47,5 @@ export class CurrencyTrendsComponent implements OnInit, OnChanges {
     ];
   
   }
-
-ngOnChanges(changes: SimpleChanges) {
-  // if (changes.values && changes.baseCurrency) {}
-  // this.lineChartData = [
-  //   { data: changes.values.currentValue, label: 'Trend in INR against ' + changes.baseCurrency.currentValue },
-  // ];
-  // this.lineChartLabels = changes.months.currentValue;
-
-  // this.lineChartOptions = {
-  //   responsive: true,
-  // };
-
-  // this.lineChartColors = [
-  //   {
-  //     borderColor: 'black',
-  //     backgroundColor: 'rgba(255,255,0,0.28)',
-  //   },
-  // ];
-}
 
 }
