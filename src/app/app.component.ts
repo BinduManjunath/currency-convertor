@@ -15,7 +15,6 @@ import { ConversionRatesService } from './shared/services/conversion-rates.servi
 export class AppComponent {
   title = 'sample-currency-convertor';
   currencies: any;
-  constructor(private currencyListService: CurrencyListService) {
-      this.currencies = this.currencyListService.getCurrencies();
+  constructor() {
     }
 }

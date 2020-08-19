@@ -20,9 +20,9 @@ export class ConversionRatesService {
     );
   }
 
-  getTrendRates(fromDate: String, toDate: String) {
+  getTrendRates(baseCurrencyCode: any, fromDate: String, toDate: String) {
     return this.http.get<ExchangeRates>(
-      `${this.apihistory}?start_at=${fromDate}&end_at=${toDate}&base=EUR`
+      `${this.apihistory}?start_at=${fromDate}&end_at=${toDate}&base=${baseCurrencyCode}`
     );
   }
 }

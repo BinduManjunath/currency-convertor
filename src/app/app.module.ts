@@ -11,12 +11,16 @@ import { CurrencySelectorComponent } from './shared/components/currency-selector
 import { HttpClientModule } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
 import { CurrencyTrendsComponent } from './shared/components/currency-trends/currency-trends.component';
+import { SelectTrendsComponent } from './pages/select-trends/select-trends.component';
+import { ConvertCurrencyComponent } from './pages/convert-currency/convert-currency.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CurrencySelectorComponent,
-    CurrencyTrendsComponent
+    CurrencyTrendsComponent,
+    SelectTrendsComponent,
+    ConvertCurrencyComponent
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ import { ConversionRatesService } from '../../services/conversion-rates.service'
 export class CurrencySelectorComponent implements OnInit {
 
   @Input() currencies: any;
+  @Input() isTrendSelected: any;
   currencyArray: string[];
   otherCurrencyCode = 'INR';
   amount: any;
@@ -24,6 +25,7 @@ export class CurrencySelectorComponent implements OnInit {
   dateArr: any[];
   trendInCurrency = [];
   isTrend: boolean;
+  show: boolean;
   constructor(public currencyService: ConversionRatesService) { }
 
   /**
@@ -42,7 +44,8 @@ export class CurrencySelectorComponent implements OnInit {
    */
   selectCurrency(value) {
     this.baseCurrencyCode = value;
-    this.onConvertClick();
+    this.onConvertClick(false);
+    this.show = false;
   }
 
   /**
@@ -51,17 +54,19 @@ export class CurrencySelectorComponent implements OnInit {
    */
   changeCurrency(event) {
     this.amount = event.target.value;
-    this.onConvertClick();
+    this.onConvertClick(false);
   }
 
 
   /**
    * This method is called on click of convert
    */
-  async onConvertClick() {
-    const res = await this.currencyService.getLatestExchangeRates(this.baseCurrencyCode).subscribe((con) => {
+  async onConvertClick(isSubmit = true) {
+    await this.currencyService.getLatestExchangeRates(this.baseCurrencyCode).subscribe((con) => {
       this.otherCurrencyConversionRate = con.rates.INR;
-      this.submit = true;
+      if (isSubmit) {
+        this.submit = true;
+      }
     });
 
   }
@@ -70,7 +75,7 @@ export class CurrencySelectorComponent implements OnInit {
    * This method is called on click of trends
    */
   async getTrends() {
-    const res = await this.currencyService.getTrendRates('2019-08-18', '2020-08-18').subscribe((con) => {
+    const res = await this.currencyService.getTrendRates(this.baseCurrencyCode, '2019-08-18', '2020-08-18').subscribe((con) => {
       const keys = Object.keys(con.rates);
       this.monthArr = [];
       this.dateArr = [];
@@ -83,7 +88,6 @@ export class CurrencySelectorComponent implements OnInit {
           this.dateArr.push(key);
         }
       });
-      console.log("datearr", this.dateArr)
       if (this.dateArr.length > 0) {
         this.dateArr.forEach((date: any, ind: any) => {
           const value = con.rates[date];
@@ -91,9 +95,9 @@ export class CurrencySelectorComponent implements OnInit {
             this.trendInCurrency.push(value['INR']);
           }
         });
-        console.log("trendCurre", this.trendInCurrency)
       }
       this.isTrend = true;
+      this.show = true;
     });
 
   }
