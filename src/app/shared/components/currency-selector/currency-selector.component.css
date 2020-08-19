@@ -7,6 +7,7 @@
     height: 2.5rem;
     margin-left: 2rem;
     margin-right: 2rem;
+    margin-top: 2rem;
 }
 
 .currency-card {
@@ -58,6 +59,11 @@
     .conversion-rate {
       font-size: 1rem;
     }
+  }
+
+  .trend-button {
+    border: 3px solid green;
+    width: fit-content;
   }
   
 
