@@ -1,27 +1,30 @@
-# SampleCurrencyConvertor
+# Setup
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
+1. Clone the project using git or by downloading the zip file.
+2. Run "npm install" to install the node modues.
+3. This application uses ng2-charts to display trends(charts). To install the module and its dependencies, 
+      run:
+      npm install ng2-charts@2.2.5 --save
+      npm install chart.js --save
+ 4. Run "ng serve --o". This will open the application at http://localhost:4200/
+ 
+## Use case A
 
-## Development server
+1. The app lands at the currency conversion page by default.
+2. Select the currency using the dropdown.
+3. Enter the amount you want to convert into INR.
+4. Click convert.
+5. The corresponding conversion rate will be shown in INR.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Use case B
 
-## Code scaffolding
+1. Click on "Show trends" in the nav-bar.
+2. Select the currency using the dropdown.
+3. Click on "Trends" button.
+4. A line graph shows the trend in the choosen currency against INR in an year(current-past 12 months)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Future Enhancements
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+1. Add date picker to allow the user to select the start and end date between which they want to see the currency trends.
+2. Include the other types of charts such as pie chart, bar graph, etc.
+3. Allow the user to interchange INR and choosen currency and enter the amount in INR to see the conversion rate of choosen currency.
