@@ -75,7 +75,7 @@ export class CurrencySelectorComponent implements OnInit {
    * This method is called on click of trends
    */
   async getTrends() {
-    const res = await this.currencyService.getTrendRates(this.baseCurrencyCode, '2019-08-18', '2020-08-18').subscribe((con) => {
+    await this.currencyService.getTrendRates(this.baseCurrencyCode, '2019-08-18', '2020-08-18').subscribe((con) => {
       const keys = Object.keys(con.rates);
       this.monthArr = [];
       this.dateArr = [];
@@ -89,6 +89,7 @@ export class CurrencySelectorComponent implements OnInit {
         }
       });
       if (this.dateArr.length > 0) {
+        this.dateArr.sort();
         this.dateArr.forEach((date: any, ind: any) => {
           const value = con.rates[date];
           if (value) {
