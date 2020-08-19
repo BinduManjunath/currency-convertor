@@ -3,9 +3,9 @@
 1. Clone the project using git or by downloading the zip file.
 2. Run "npm install" to install the node modues.
 3. This application uses ng2-charts to display trends(charts). To install the module and its dependencies, 
-      run:
-      npm install ng2-charts@2.2.5 --save
-      npm install chart.js --save
+      Run:
+      a. npm install ng2-charts@2.2.5 --save
+      b. npm install chart.js --save
  4. Run "ng serve --o". This will open the application at http://localhost:4200/
  
 ## Use case A
